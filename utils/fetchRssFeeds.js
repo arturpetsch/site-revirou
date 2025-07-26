@@ -1,29 +1,29 @@
 const Parser = require('rss-parser');
-const parser = new Parser();
+const parser = new Parser({
+  timeout: 7000, // evita feeds que travam
+});
 
 const rssFeeds = [
-  // Notícias gerais e políticas
-  'https://g1.globo.com/rss/g1/',                             // G1 geral
-  'https://g1.globo.com/politica/rss/g1/politica/',          // G1 Política
-  'https://www.oantagonista.com/rss/',                       // O Antagonista (centro-direita)
-  'https://www.gazetadopovo.com.br/rss/',                    // Gazeta do Povo (direita)
-  'https://revistaoeste.com/feed/',                          // Revista Oeste (direita)
-  'https://www.jornaldacidadeonline.com.br/rss.xml',         // JCO (direita)
-  'https://www.poder360.com.br/rss/',                        // Poder360 (neutro)
+  // Notícias gerais e política
+  'https://g1.globo.com/rss/g1/',
+  'https://g1.globo.com/politica/rss/g1/politica/',
+  'https://www.oantagonista.com/rss/',
+  'https://www.gazetadopovo.com.br/rss/',
+  'https://revistaoeste.com/feed/',
+  'https://www.jornaldacidadeonline.com.br/rss.xml',
+  'https://www.poder360.com.br/rss/',
 
   // Tecnologia e curiosidades
   'https://www.tecmundo.com.br/rss',
   'https://olhardigital.com.br/feed/',
-  'https://feeds.feedburner.com/meiobit',                    // Meio Bit
+  'https://feeds.feedburner.com/meiobit',
   'https://canaltech.com.br/rss/',
-  'https://www.cienciaviva.pt/feed/',                        // Ciência (português europeu)
-  'https://feed.megacurioso.com.br/rss',                     // Mega Curioso
-  'https://feeds.feedburner.com/curiosidadesnanet',          // Curiosidades na Net
+  'https://feed.megacurioso.com.br/rss',
 
   // Internacionais
-  'https://rss.nytimes.com/services/xml/rss/nyt/World.xml', // NYT Mundo
-  'https://www.breitbart.com/feed/',                         // Breitbart (direita EUA)
-  'https://www.zerohedge.com/fullrss.xml',                   // ZeroHedge (críticas à esquerda)
+  'https://rss.nytimes.com/services/xml/rss/nyt/World.xml',
+  'https://www.breitbart.com/feed/',
+  'https://www.zerohedge.com/fullrss.xml',
 ];
 
 module.exports = async function fetchRssFeeds() {
@@ -45,7 +45,8 @@ module.exports = async function fetchRssFeeds() {
         );
       }
     } catch (err) {
-      console.warn(`⚠️ Erro ao carregar RSS de ${feedUrl}: ${err.message}`);
+      console.warn(`⚠️ Erro ao processar o feed: ${feedUrl}`);
+      console.warn(err.message);
       continue;
     }
   }
