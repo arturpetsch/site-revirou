@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import Parser from 'rss-parser';
 const parser = new Parser();
 
@@ -34,6 +34,4 @@ export async function fetchRssFeeds() {
 
   return allItems.slice(0, 30); // Retorna as 30 mais recentes
 }
-=======
-// Fetch and parse RSS feeds
->>>>>>> 3ccd78c (Atualizacao)
+
