@@ -4,6 +4,7 @@ import { fetchRssFeeds } from '../utils/fetchRssFeeds';
 
 export async function getServerSideProps() {
   const articles = await fetchRssFeeds();
+  console.log('ARTICLES:', articles);
   return { props: { articles } };
 }
 
@@ -11,7 +12,7 @@ export default function Home({ articles }) {
   return (
     <>
       <Head>
-        <title>Revirou - Notícias Automatizadas</title>
+        <title>Revirou - Notícias</title>
       </Head>
       <main>
         <h1>Últimas Notícias</h1>
