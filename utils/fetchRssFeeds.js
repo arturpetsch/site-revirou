@@ -22,10 +22,10 @@ export async function fetchRssFeeds() {
     try {
       const feed = await parser.parseURL(url);
       allItems.push(...feed.items.map(item => ({
-        title: item.title,
-        link: item.link,
-        contentSnippet: item.contentSnippet || '',
-        pubDate: item.pubDate || ''
+        title: typeof item.title == 'string' ? item.title : '',
+        link: typeof item.link == 'string' ? item.link : '#',
+        contentSnippet: typeof item.contentSnippet == 'string' ? item.contentSnippet : '',
+        pubDate: typeof item.pubDate == 'string' ? item.pubDate : ''
       })));
     } catch (err) {
       console.error(`Erro ao ler feed ${url}:`, err.message);
