@@ -19,7 +19,7 @@ export default function Home({ articles }) {
         <ul>
           {articles.map((a, i) => (
             <li key={i}>
-              <a href={a.link} target="_blank" rel="noopener noreferrer">{a.title}</a>
+              <a href={String(a.link || '#')} target="_blank" rel="noopener noreferrer">{String(a.title || 'Sem Titulo')}</a>
               <p>{a.contentSnippet?.toString?.() || ''}</p>
             </li>
           ))}
