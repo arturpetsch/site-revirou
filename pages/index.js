@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Head from 'next/head';
 import { fetchRssFeeds } from '../utils/fetchRssFeeds';
 
@@ -26,3 +27,6 @@ export default function Home({ articles }) {
     </>
   );
 }
+=======
+// Main page with improved layout
+>>>>>>> 3ccd78c (Atualizacao)
